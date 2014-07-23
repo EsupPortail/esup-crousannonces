@@ -1,0 +1,28 @@
+.ca-portlet *, 
+.ca-portlet *:before,  
+.ca-portlet *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.ca-portlet .annonce {
+	padding: 0 15px;
+}
+
+.ca-portlet .picture-crop {
+	text-align: center;
+	overflow: hidden;
+}
+	.ca-portlet .picture-crop img {
+		width: 100%;
+		-webkit-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+	}
+	
+.ca-portlet .thumbnail:hover {
+	box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+	.ca-portlet .thumbnail:hover img {
+		opacity: .7;
+	}
