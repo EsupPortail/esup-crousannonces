@@ -2,13 +2,17 @@
 
 	<header>
 		<h2>
-			<spring:message code="view.nb.result" arguments="${rental.query.nbResults}"/>
+			<spring:message code="view.nb.result" arguments="${response.query.nbResults}"/>
 			<small>
+				<portlet:renderURL var="rentalSearchLink">
+					<portlet:param name="action" value="rentalSearch"/>
+				</portlet:renderURL>
+			
 				<spring:message code="view.reset.search"/>
-				<button type="button" class="btn btn-default btn-md">
+				<a href="${rentalSearchLink}" role="button" class="btn btn-default btn-md">
 					<span class="glyphicon glyphicon-search"></span>
 					<spring:message code="view.new.search"/>
-				</button>
+				</a>
 			</small>
 		</h2>
 		
@@ -16,7 +20,7 @@
 	</header>
 	
 	<div>
-		<c:forEach var="rentalItem" items="${rental.results.resultList}" varStatus="status">
+		<c:forEach var="rentalItem" items="${response.results.resultList}" varStatus="status">
 		
 			<article class="annonce">
 				

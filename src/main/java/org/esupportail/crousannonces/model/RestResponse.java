@@ -1,4 +1,4 @@
-package org.esupportail.crousannonces.models;
+package org.esupportail.crousannonces.model;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 

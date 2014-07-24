@@ -52,4 +52,12 @@ public class URLUtils {
 		return map;
 	}
 
+	public static String arrayToQueryString(String key, Object[] arr) {
+		
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<arr.length; i++) {
+			sb.append("&" + key + "[]=" + arr[i].toString());
+		}
+		return sb.toString();
+	}
 }

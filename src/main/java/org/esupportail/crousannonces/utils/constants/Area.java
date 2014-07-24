@@ -5,11 +5,20 @@ import java.util.Map;
 
 public class Area  {
 	
+	public static final Map<Integer, Map<Integer, String>> PLACE_CODE = new HashMap<Integer, Map<Integer, String>>();
+	
+	public static final Map<Integer, String> INSEE_CODE = new HashMap<Integer, String>();
 	public static final Map<Integer, String> TOWN_CODE = new HashMap<Integer, String>();
-	public static final Map<Integer, String> REGION_CODE = new HashMap<Integer, String>();
 	public static final Map<Integer, String> DEPARTMENT_CODE = Department.getList();
+	public static final Map<Integer, String> REGION_CODE = new HashMap<Integer, String>();
 	
 	static {
+		
+		Area.PLACE_CODE.put(1, Area.INSEE_CODE);
+		Area.PLACE_CODE.put(2, Area.TOWN_CODE);
+		Area.PLACE_CODE.put(3, Area.DEPARTMENT_CODE);
+		Area.PLACE_CODE.put(4, Area.REGION_CODE);
+		
 		// Town codes
 		Area.TOWN_CODE.put(80, "Nîmes");
 		Area.TOWN_CODE.put(77, "Agen");

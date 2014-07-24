@@ -1,4 +1,4 @@
-package org.esupportail.crousannonces.models;
+package org.esupportail.crousannonces.model;
 
 import java.net.URL;
 import java.util.Date;
