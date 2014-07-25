@@ -19,7 +19,7 @@
 		<jsp:directive.include file="pager.jsp"/>
 	</header>
 	
-	<div>
+	<section>
 		<c:forEach var="rentalItem" items="${response.results.resultList}" varStatus="status">
 		
 			<article class="annonce">
@@ -69,7 +69,7 @@
 					
 			</article>
 		</c:forEach>
-	</div>
+	</section>
 	
 	<footer>
 		<jsp:directive.include file="pager.jsp"/>

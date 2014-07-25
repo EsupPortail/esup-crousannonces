@@ -5,13 +5,17 @@
 	<portlet:param name="action" value="jobList"/>
 </portlet:renderURL>
 
-<c:if test="${activeView eq 'lokaviz'}">
-	<a href="${jobListLink}" class="btn btn-default btn-lg">
-		Annonces emploi
-	</a>
-</c:if>
-<c:if test="${activeView eq 'jobaviz'}">
-	<a href="${rentalListLink}" class="btn btn-default btn-lg">
-		Annonces location
-	</a>
-</c:if>
+<p class="text-center">
+
+	<c:if test="${activeView eq 'lokaviz'}">
+		<a href="${jobListLink}" class="btn btn-default btn-lg">
+			Annonces emploi
+		</a>
+	</c:if>
+	<c:if test="${activeView eq 'jobaviz'}">
+		<a href="${rentalListLink}" class="btn btn-default btn-lg">
+			Annonces location
+		</a>
+	</c:if>
+
+</p>
