@@ -4,12 +4,12 @@
 		<h2>
 			<spring:message code="view.nb.result" arguments="${response.query.nbResults}"/>
 			<small>
-				<portlet:renderURL var="rentalSearchLink">
-					<portlet:param name="action" value="rentalSearch"/>
+				<portlet:renderURL var="jobSearchLink">
+					<portlet:param name="action" value="jobSearch"/>
 				</portlet:renderURL>
 			
 				<spring:message code="view.reset.search"/>
-				<a href="${rentalSearchLink}" role="button" class="btn btn-default btn-md">
+				<a href="${jobSearchLink}" role="button" class="btn btn-default btn-md">
 					<span class="glyphicon glyphicon-search"></span>
 					<spring:message code="view.new.search"/>
 				</a>

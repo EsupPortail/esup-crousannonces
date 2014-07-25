@@ -32,7 +32,6 @@ public class Rental {
 		Rental.CONTRACT_TYPE.put(5, "Meublé");
 		Rental.CONTRACT_TYPE.put(6, "Non meublé");
 
-		Rental.PLACE_TYPE.put(1, "Commune");
 		Rental.PLACE_TYPE.put(2, "Agglomération");
 		Rental.PLACE_TYPE.put(3, "Département");
 		Rental.PLACE_TYPE.put(4, "Région");

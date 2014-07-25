@@ -55,8 +55,8 @@ public class URLUtils {
 	public static String arrayToQueryString(String key, Object[] arr) {
 		
 		StringBuilder sb = new StringBuilder();
-		for(int i=0; i<arr.length; i++) {
-			sb.append("&" + key + "[]=" + arr[i].toString());
+		for(Object o : arr) {
+			sb.append("&" + key + "[]=" + o.toString());
 		}
 		return sb.toString();
 	}

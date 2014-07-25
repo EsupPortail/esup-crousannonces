@@ -16,6 +16,7 @@ import org.esupportail.crousannonces.form.RentalForm;
 import org.esupportail.crousannonces.model.RestResponse;
 import org.esupportail.crousannonces.utils.URLUtils;
 import org.esupportail.crousannonces.utils.constants.Area;
+import org.esupportail.crousannonces.utils.constants.Job;
 import org.esupportail.crousannonces.utils.constants.Rental;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -150,6 +151,18 @@ public class ViewController {
 	public String jobSearch(Model model) {
 		
 		model.addAttribute("command", new JobForm());
+		model.addAttribute("domaineList", Job.FIELD); 
+		model.addAttribute("aideADomicileList", Job.TYPE_AIDE_A_DOMICILE); 
+		model.addAttribute("animationList", Job.TYPE_ANIMATION); 
+		model.addAttribute("autresList", Job.TYPE_AUTRES); 
+		model.addAttribute("bureauList", Job.TYPE_BUREAU); 
+		model.addAttribute("hotellerieList", Job.TYPE_HOTELLERIE); 
+		model.addAttribute("venteList", Job.TYPE_VENTE);
+		model.addAttribute("contratList", Job.CONTRACT_TYPE);
+		model.addAttribute("placeTypeList", Rental.PLACE_TYPE); 
+		model.addAttribute("townList", Area.TOWN_CODE); 
+		model.addAttribute("departmentList", Area.DEPARTMENT_CODE); 
+		model.addAttribute("regionList", Area.REGION_CODE); 
 		return "jobSearch";
 	}
 

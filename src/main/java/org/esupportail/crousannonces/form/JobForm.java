@@ -19,7 +19,6 @@ public class JobForm {
 	private Integer[] vente;
 	
 	private Integer[] contrat;
-	private String[] employeurType;
 	private int teletravail;
 	private int typeLieu;
 	private int codeLieu;
@@ -76,9 +75,6 @@ public class JobForm {
 		if(this.contrat.length > 0) {
 			arrayQueryStrings.add(URLUtils.arrayToQueryString("contrat", this.contrat));
 		}
-		if(this.employeurType.length > 0) {
-			arrayQueryStrings.add(URLUtils.arrayToQueryString("employeur_type", this.employeurType));
-		}
 		if(this.teletravail > 0) {
 			argumentMap.put("teletravail", this.teletravail+"");
 		}
@@ -126,12 +122,6 @@ public class JobForm {
 	}
 	public void setContrat(Integer[] contrat) {
 		this.contrat = contrat;
-	}
-	public String[] getEmployeurType() {
-		return employeurType;
-	}
-	public void setEmployeurType(String[] employeurType) {
-		this.employeurType = employeurType;
 	}
 	public int getTeletravail() {
 		return teletravail;
