@@ -62,7 +62,7 @@ public enum Department {
 	Mayenne(53, "Mayenne", "Pays de la Loire", "Laval"),
 	MeurtheEtMoselle(54, "Meurthe-et-Moselle", "Lorraine", "Nancy"),
 	Meuse(55, "Meuse", "Lorraine", "Bar le duc"),
-	Morbihan(55, "Morbihan", "Bretagne", "Vannes"),
+	Morbihan(56, "Morbihan", "Bretagne", "Vannes"),
 	Moselle(57, "Moselle", "Lorraine", "Metz"),
 	Nièvre(58, "Nièvre", "Bourgogne", "Nevers"),
 	Nord(59, "Nord", "Nord-Pas-de-Calais", "Lille"),

@@ -181,6 +181,7 @@ public class ViewController {
 			} catch (Exception e) {}
 		}
 
+		response.setRenderParameter("action", "jobList");
 		response.setRenderParameter("jobavizUrl", this.JOBAVIZ_URL + queryString);
 	}
 	
@@ -215,6 +216,8 @@ public class ViewController {
 				pref.store();
 			} catch (Exception e) {}
 		}
+		
+		response.setRenderParameter("action", "rentalList");
 		response.setRenderParameter("lokavizUrl", this.LOKAVIZ_URL + queryString);
 	}
 	

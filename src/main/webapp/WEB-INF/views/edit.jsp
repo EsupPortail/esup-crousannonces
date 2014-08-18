@@ -7,11 +7,18 @@
 
 <p>
 	<portlet:actionURL name="deletePreferences" var="deletePreferencesAction"/>
+	
+	<c:if test="${lokaviz and lokavizPrefs != null}">
+		<strong>Préférence lokaviz</strong>
+	</c:if>
+	<c:if test="${jobaviz and jobavizPrefs != null}">
+		<strong>Préférence jobaviz</strong>
+	</c:if>
+	
 	<a href="${deletePreferencesAction}" class="btn btn-danger btn-md">
 		Supprimer mes recherches enregistrées
 	</a>
 </p>
-${isLokavizActive}
 <c:if test="${isDeleted eq true}">
 	<div class="alert alert-warning" role="alert">
 		Vous avez supprimer vos recherches par défaut.
@@ -19,7 +26,7 @@ ${isLokavizActive}
 		<ul>
 			<c:if test="${lokaviz eq true}">
 			
-				<portlet:renderURL var="jobSearchLink">
+				<portlet:renderURL var="jobSearchLink" portletMode="view">
 					<portlet:param name="action" value="jobSearch"/>
 				</portlet:renderURL>
 			
@@ -29,7 +36,7 @@ ${isLokavizActive}
 			</c:if>
 			<c:if test="${jobaviz eq true}">
 	
-				<portlet:renderURL var="rentalSearchLink">
+				<portlet:renderURL var="rentalSearchLink" portletMode="view">
 					<portlet:param name="action" value="rentalSearch"/>
 				</portlet:renderURL>
 				

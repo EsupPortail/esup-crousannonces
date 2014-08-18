@@ -1,7 +1,7 @@
-<c:if test="${not empty rental.query.prev or not empty rental.query.next}">
+<c:if test="${not empty response.query.prev or not empty response.query.next}">
 	<ul class="pager">
 		<c:choose>
-			<c:when test="${not empty rental.query.prev}">
+			<c:when test="${not empty response.query.prev}">
 				<portlet:renderURL var="prevLink">
 	  				<portlet:param name="lokavizUrl" value="${response.query.prev}"/>
 				</portlet:renderURL>
@@ -20,7 +20,7 @@
 		</li>
 	
 		<c:choose>
-			<c:when test="${not empty rental.query.next}">
+			<c:when test="${not empty response.query.next}">
 				<portlet:renderURL var="nextLink">
 	  				<portlet:param name="lokavizUrl" value="${response.query.prev}"/>
 				</portlet:renderURL>

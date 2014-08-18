@@ -3,6 +3,7 @@ package org.esupportail.crousannonces.controllers;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletPreferences;
+import javax.portlet.RenderRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +24,16 @@ public class EditController {
 	@Value("${activate.jobaviz}") private boolean isJobavizActivate;
 	
 	@RenderMapping
-	public String edit(Model model, @RequestParam( value = "isDeleted", required = false) String isDeleted) {
+	public String edit(RenderRequest request, Model model, @RequestParam( value = "isDeleted", required = false) String isDeleted) {
 
+		PortletPreferences prefs = request.getPreferences();
+		try {
+			model.addAttribute("lokavizPrefs", prefs.getValue(ViewController.LOKAVIZ_PREFERENCE_KEY, null));
+			model.addAttribute("jobavizPrefs", prefs.getValue(ViewController.JOBAVIZ_PREFERENCE_KEY, null));
+		} catch (Exception e) {
+			// We can't fetch preferences
+		}
+		
 		model.addAttribute("lokaviz", isLokavizActivate);
 		model.addAttribute("jobaviz", isJobavizActivate);
 		
