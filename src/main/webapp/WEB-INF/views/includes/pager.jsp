@@ -1,9 +1,19 @@
 <c:if test="${not empty response.query.prev or not empty response.query.next}">
+	<c:choose>
+		<c:when test="${activeView eq 'jobaviz'}">
+			<c:set var="actionName" value="jobList" />		
+		</c:when>
+		<c:otherwise>
+			<c:set var="actionName" value="rentalList" />
+		</c:otherwise>
+	</c:choose>
+	
 	<ul class="pager">
 		<c:choose>
 			<c:when test="${not empty response.query.prev}">
 				<portlet:renderURL var="prevLink">
-	  				<portlet:param name="lokavizUrl" value="${response.query.prev}"/>
+					<portlet:param name="action" value="${actionName}"/>
+	  				<portlet:param name="${activeView}Url" value="${response.query.prev}"/>
 				</portlet:renderURL>
 				<c:set var="disabledAttr" value=""/>
 			</c:when>
@@ -22,7 +32,8 @@
 		<c:choose>
 			<c:when test="${not empty response.query.next}">
 				<portlet:renderURL var="nextLink">
-	  				<portlet:param name="lokavizUrl" value="${response.query.prev}"/>
+					<portlet:param name="action" value="${actionName}"/>
+	  				<portlet:param name="${activeView}Url" value="${response.query.next}"/>
 				</portlet:renderURL>
 				<c:set var="disabledAttr" value=""/>
 			</c:when>
