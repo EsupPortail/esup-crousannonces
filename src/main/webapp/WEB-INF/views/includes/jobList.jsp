@@ -27,7 +27,7 @@
 					<h3>
 						${jobItem.domaine} - ${jobItem.type}
 						<small>
-							Annonce publié le ${jobItem.publication}
+							<spring:message code="view.published.date" arguments="${jobItem.publication}"/>
 						</small>
 					</h3>
 					
@@ -56,7 +56,7 @@
 					
 					<p>
 						<a href="${jobItem.url}" target="_blank" class="btn btn-primary btn-md">
-							Voir l'annonce complète
+							<spring:message code="view.full"/>
 						</a>					
 					</p>				
 				</div>
@@ -68,5 +68,10 @@
 	<footer>
 		<jsp:directive.include file="pager.jsp"/>
 	</footer>	
+	
+	<p>
+		<spring:message code="portlet.source"/>
+		<em><a href="http://www.jobaviz.fr/">Jobaviz.fr</a></em>
+	</p>
 	
 </section>

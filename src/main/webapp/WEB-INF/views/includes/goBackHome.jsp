@@ -2,7 +2,7 @@
 <p>
 	<a href="${goBackHomeLink}">
 		<span class="glyphicon glyphicon-arrow-left"></span>
-		Retour à l'accueil
+		<spring:message code="portlet.home"/>
 	</a>
 </p>
 <hr/>

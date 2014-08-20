@@ -8,12 +8,12 @@
 
 	<fieldset>
 		<legend>
-			Caractéristique
+			<spring:message code="form.legend.caracteristics"/>
 		</legend>
 		
 		<p>
 			<form:label path="situation">
-				Situation :			
+				<spring:message code="form.label.situation"/>
 			</form:label>
 		</p>
 		<ul class="clearfix">
@@ -21,8 +21,8 @@
 		</ul>
 		
 		<p>
-			<form:label path="type">		
-				Type de logement :
+			<form:label path="type">
+				<spring:message code="form.label.type"/>
 			</form:label> 
 		</p>
 		<ul class="clearfix">
@@ -33,11 +33,13 @@
 	
 	<fieldset>
 		
-		<legend>Aménagement</legend>
+		<legend>
+			<spring:message code="form.legend.roomfitting"/>
+		</legend>
 	
 		<p>
 			<form:label path="contrat">	
-				Intérieur : 
+				<spring:message code="form.label.inside"/>
 			</form:label>
 		</p>
 		<ul class="clearfix">
@@ -47,14 +49,14 @@
 		<br>
 		
 		<form:label path="isPMR">
-			PMR :  
+			<spring:message code="form.label.pmr"/>
 		</form:label>
 		<form:checkbox path="isPMR" value="1" id="isPMR"/>
 			
 			<br>
 				
 		<form:label path="isLabel">
-			Label : 
+			<spring:message code="form.label.label"/>
 		</form:label>
 		<form:checkbox path="isLabel" value="1" id="isLabel"/>
 	
@@ -62,7 +64,9 @@
 
 	<fieldset>
 	
-		<legend>Localisation de la recherche</legend>	
+		<legend>
+			<spring:message code="form.legend.geolocation"/>
+		</legend>	
 
 		<form:radiobuttons element="li" path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
 
@@ -84,18 +88,18 @@
 	<fieldset>
 	
 		<legend>
-			Paramètres
+			<spring:message code="form.legend.parameter"/>
 		</legend>
 	
-		<div id="savedSearch-field"  title="Cette recherche vous sera affiché par défaut si vous cochez cette case." data-toggle="tooltip" data-placement="top">
+		<div id="savedSearch-field"  title="<spring:message code="form.search.save.label"/>" data-toggle="tooltip" data-placement="top">
 			<form:label path="savedSearch">
-				Sauvegarder cette recherche : 
+				<spring:message code="form.search.save"/>
 			</form:label>
 			<form:checkbox path="savedSearch" value="true" id="savedSearch"/>
 		</div>
 	
-		<input type="submit" value="Lancer la Recherche"/>
-		<input type="reset" value="Remettre à zéro"/>
+		<input type="submit" value="<spring:message code="form.submit.label"/>"/>
+		<input type="reset" value="<spring:message code="form.reset.label"/>"/>
 		
 	</fieldset>
 

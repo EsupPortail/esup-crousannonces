@@ -1,21 +1,20 @@
-<portlet:renderURL var="rentalListLink">
-	<portlet:param name="action" value="rentalList"/>
-</portlet:renderURL>
-<portlet:renderURL var="jobListLink">
-	<portlet:param name="action" value="jobList"/>
-</portlet:renderURL>
+<c:set var="activeTabClass" value="class=\"active\""/>
 
-<p class="text-center">
-
-	<c:if test="${activeView eq 'lokaviz'}">
-		<a href="${jobListLink}" class="btn btn-default btn-lg">
-			Annonces emploi
+<ul class="nav nav-tabs" role="tablist">
+	<li <c:if test="${activeView eq 'lokaviz'}">${activeTabClass}</c:if>>
+		<portlet:renderURL var="rentalListLink">
+			<portlet:param name="action" value="rentalList"/>
+		</portlet:renderURL>
+		<a href="${rentalListLink}">
+			<spring:message code="tab.lokaviz.label"/>
 		</a>
-	</c:if>
-	<c:if test="${activeView eq 'jobaviz'}">
-		<a href="${rentalListLink}" class="btn btn-default btn-lg">
-			Annonces location
+	</li>
+	<li <c:if test="${activeView eq 'jobaviz'}">${activeTabClass}</c:if>>
+		<portlet:renderURL var="jobListLink">
+			<portlet:param name="action" value="jobList"/>
+		</portlet:renderURL>
+		<a href="${jobListLink}">
+			<spring:message code="tab.jobaviz.label"/>
 		</a>
-	</c:if>
-
-</p>
+	</li>
+</ul>

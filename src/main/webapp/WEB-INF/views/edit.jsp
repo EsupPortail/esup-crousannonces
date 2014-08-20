@@ -5,23 +5,29 @@
 
 <jsp:directive.include file="includes/goBackHome.jsp" />
 
-<p>
-	<portlet:actionURL name="deletePreferences" var="deletePreferencesAction"/>
-	
+<ul>
 	<c:if test="${lokaviz and lokavizPrefs != null}">
-		<strong>Préférence lokaviz</strong>
+		<li>
+			<spring:message code="edit.saved.search" arguments="Lokaviz"/>
+		</li>
 	</c:if>
 	<c:if test="${jobaviz and jobavizPrefs != null}">
-		<strong>Préférence jobaviz</strong>
+		<li>
+			<spring:message code="edit.saved.search" arguments="Jobaviz"/>
+		</li>
 	</c:if>
-	
+</ul>
+
+<p>
+	<portlet:actionURL name="deletePreferences" var="deletePreferencesAction"/>	
 	<a href="${deletePreferencesAction}" class="btn btn-danger btn-md">
-		Supprimer mes recherches enregistrées
+		<spring:message code="edit.delete.saved.search"/>
 	</a>
 </p>
+
 <c:if test="${isDeleted eq true}">
 	<div class="alert alert-warning" role="alert">
-		Vous avez supprimer vos recherches par défaut.
+		<spring:message code="edit.deleted.search"/>
 		
 		<ul>
 			<c:if test="${lokaviz eq true}">
@@ -31,7 +37,10 @@
 				</portlet:renderURL>
 			
 				<li>
-					Lancer une nouvelle <a href="${jobSearchLink}">recherche d'emploi</a>
+					<spring:message code="edit.new.search"/>
+					<a href="${jobSearchLink}">
+						<spring:message code="edit.new.jobSearch"/>
+					</a>
 				</li>
 			</c:if>
 			<c:if test="${jobaviz eq true}">
@@ -41,7 +50,10 @@
 				</portlet:renderURL>
 				
 				<li>
-					Lancer une nouvelle <a href="${rentalSearchLink}">recheche de logement</a>
+					<spring:message code="edit.new.search"/>
+					<a href="${jobSearchLink}">
+						<spring:message code="edit.new.rentalSearch"/>
+					</a>
 				</li>
 			</c:if>
 		</ul>

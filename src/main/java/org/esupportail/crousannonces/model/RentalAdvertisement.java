@@ -2,9 +2,6 @@ package org.esupportail.crousannonces.model;
 
 import java.net.URL;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class RentalAdvertisement {
@@ -47,55 +44,55 @@ public class RentalAdvertisement {
 	private URL advertisement;
 	
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	public String getReference() {
-		return reference;
+		return this.reference;
 	}
 	public String getSituation() {
-		return situation;
+		return this.situation;
 	}
 	public int getType() {
-		return type;
+		return this.type;
 	}
 	public long getSurface() {
-		return surface;
+		return this.surface;
 	}
 	public int getContract() {
-		return contract;
+		return this.contract;
 	}
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 	public String getCity() {
-		return city;
+		return this.city;
 	}
 	public Date getAvailability() {
-		return availabilityDate;
+		return this.availabilityDate;
 	}
 	public long getRent() {
-		return rent;
+		return this.rent;
 	}
 	public long getCharges() {
-		return charges;
+		return this.charges;
 	}
 	public int getServices() {
-		return services;
+		return this.services;
 	}
 	public int getLabel() {
-		return label;
+		return this.label;
 	}
 	public int getPmr() {
-		return pmr;
+		return this.pmr;
 	}
 	public Date getPublishingDate() {
-		return publishingDate;
+		return this.publishingDate;
 	}
 	public URL getThumbnail() {
-		return thumbnail;
+		return this.thumbnail;
 	}
 	public URL getAdvertisement() {
-		return advertisement;
+		return this.advertisement;
 	}
 	
 }

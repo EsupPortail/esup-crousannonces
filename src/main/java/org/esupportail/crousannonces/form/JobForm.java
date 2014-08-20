@@ -1,32 +1,32 @@
 package org.esupportail.crousannonces.form;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
 import org.esupportail.crousannonces.utils.URLUtils;
 
-public class JobForm {
+public class JobForm extends CrousForm {
 
-	private int domaine;
-	private Integer[] type;
+	protected int domaine;
+	protected Integer[] type;
 
-	private Integer[] aideADomicile;
-	private Integer[] animation;
-	private Integer[] autres;
-	private Integer[] bureau;
-	private Integer[] hotellerie;
-	private Integer[] vente;
-	
-	private Integer[] contrat;
-	private int teletravail;
-	private int typeLieu;
-	private int codeLieu;
-	private int townCode;
-	private int departmentCode;
-	private int regionCode;
-	private String order;
-	private boolean isSavedSearch;
+	protected Integer[] aideADomicile;
+	protected Integer[] animation;
+	protected Integer[] autres;
+	protected Integer[] bureau;
+	protected Integer[] hotellerie;
+	protected Integer[] vente;
+	protected Integer[] contrat;
+	protected int teletravail;
+	protected int typeLieu;
+	protected int codeLieu;
+	protected int townCode;
+	protected int departmentCode;
+	protected int regionCode;
+	protected String order;
+	protected boolean isSavedSearch;
 	
 	public String buildQueryString(Map<String, String> defaults) {
 		
@@ -226,5 +226,16 @@ public class JobForm {
 		this.regionCode = regionCode;
 	}
 	
+	public String[] fieldsToArray() throws IllegalAccessException {
+		
+		Field[] fields = getClass().getDeclaredFields();		
+		String[] arr = new String[fields.length];
+		
+		for(int i=0; i<fields.length; i++) {
+			arr[i] = fields[i].getName() + "=" + fields[i].get(this);
+		}
+	
+		return arr;
+	}
 	
 }

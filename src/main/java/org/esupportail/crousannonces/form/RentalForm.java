@@ -6,20 +6,20 @@ import java.util.Vector;
 
 import org.esupportail.crousannonces.utils.URLUtils;
 
-public class RentalForm {
+public class RentalForm extends CrousForm {
 
-	private Integer[] situation;
-	private Integer[] type;
-	private Integer[] contrat;
-	private int   isPMR;
-	private int   isLabel;
-	private int   typeLieu;
-	private int   codeLieu;
-	private int   townCode;
-	private int   departmentCode;
-	private int   regionCode;
-	private String order;
-	private boolean savedSearch;
+	protected Integer[] situation;
+	protected Integer[] type;
+	protected Integer[] contrat;
+	protected int   isPMR;
+	protected int   isLabel;
+	protected int   typeLieu;
+	protected int   codeLieu;
+	protected int   townCode;
+	protected int   departmentCode;
+	protected int   regionCode;
+	protected String order;
+	protected boolean savedSearch;
 
 	public String buildQueryString(Map<String, String> defaults) {
 	
@@ -35,7 +35,7 @@ public class RentalForm {
 			arrayQueryStrings.add(URLUtils.arrayToQueryString("refloglogement", this.type));
 		}
 		if(this.contrat.length > 0) {
-			arrayQueryStrings.add(URLUtils.arrayToQueryString("refloglogement", this.contrat));
+			arrayQueryStrings.add(URLUtils.arrayToQueryString("reflogmeuble", this.contrat));
 		}
 		if(this.isPMR > 0) {
 			argumentMap.put("ispmr", this.isPMR + "");

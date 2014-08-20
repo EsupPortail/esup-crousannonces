@@ -6,8 +6,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
 import javax.portlet.PortletPreferences;
-import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
@@ -55,7 +55,9 @@ public class ViewController {
 	private HashMap<String, String> defaultQueryMap;
 
 	public static final String LOKAVIZ_PREFERENCE_KEY = "lokavizQueryString";
+	public static final String LOKAVIZ_PREFERENCE_DATA = "lokavizDataArray";
 	public static final String JOBAVIZ_PREFERENCE_KEY = "jobavizQueryString";
+	public static final String JOBAVIZ_PREFERENCE_DATA = "jobavizDataArray";
 	
 	@PostConstruct
 	public void init() {		
@@ -94,6 +96,7 @@ public class ViewController {
 			if(prefQueryString != null) {
 				
 				lokavizUrl = this.LOKAVIZ_URL + prefQueryString;
+				logger.info(lokavizUrl);
 			} else {
 				
 				Map<String, String> queryString = (HashMap) this.defaultQueryMap.clone();
@@ -103,9 +106,18 @@ public class ViewController {
 			}
 		}
 		
-		RestResponse response = this.restTemplate.getForObject(lokavizUrl, RestResponse.class);
-		model.addAttribute("response", response);
-		model.addAttribute("activeView", "lokaviz");	
+		try {
+			RestResponse response = this.restTemplate.getForObject(lokavizUrl, RestResponse.class);
+			model.addAttribute("response", response);
+			model.addAttribute("activeView", "lokaviz");	
+		} catch (Exception e) {
+			// If nb_results == 0, results isn't an object but an array. 
+			// Jackson mapper gets lost and throw a PortletException
+			// This is a glitch in the REST API => #TOFIX
+			
+			return "emptyResult";
+		}
+		
 		model.addAttribute("bothActive", this.isBothActive());
 		
 		return "home";
@@ -176,7 +188,8 @@ public class ViewController {
 			
 			PortletPreferences prefs = request.getPreferences();
 			try {
-				prefs.setValue(this.JOBAVIZ_URL, queryString);
+				prefs.setValue(this.JOBAVIZ_PREFERENCE_KEY, queryString);
+				prefs.setValues(this.JOBAVIZ_PREFERENCE_DATA, jobForm.fieldsToArray());
 				prefs.store();
 			} catch (Exception e) {}
 		}
@@ -208,14 +221,16 @@ public class ViewController {
 		String queryString = rentalForm.buildQueryString(defaults);
 		
 		if(rentalForm.isSavedSearch()) {
-			System.out.println("isSavedSearch");
 			PortletPreferences pref = request.getPreferences();
 			try {
 				
 				pref.setValue(this.LOKAVIZ_PREFERENCE_KEY, queryString);
+				pref.setValues(this.JOBAVIZ_PREFERENCE_DATA, rentalForm.fieldsToArray());
 				pref.store();
 			} catch (Exception e) {}
 		}
+		
+		logger.info(this.LOKAVIZ_URL + queryString);
 		
 		response.setRenderParameter("action", "rentalList");
 		response.setRenderParameter("lokavizUrl", this.LOKAVIZ_URL + queryString);

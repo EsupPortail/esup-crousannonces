@@ -1,9 +1,5 @@
 <jsp:directive.include file="includes/header.jsp" />
 
-<h1>
-	<spring:message code="portlet.title" />
-</h1>
-
 <c:if test="${bothActive eq true}">
 	<jsp:directive.include file="includes/tabHeader.jsp" />
 </c:if>

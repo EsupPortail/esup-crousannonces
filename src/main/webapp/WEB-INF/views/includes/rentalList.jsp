@@ -74,5 +74,10 @@
 	<footer>
 		<jsp:directive.include file="pager.jsp"/>
 	</footer>
+	
+	<p>
+		<spring:message code="portlet.source"/>
+		<em><a href="http://www.lokaviz.fr/">Lokaviz.fr</a></em>
+	</p>
 
 </section>

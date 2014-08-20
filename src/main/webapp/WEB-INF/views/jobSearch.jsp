@@ -8,11 +8,10 @@
 
 	<fieldset>
 		<legend>
-			Domaine emploi	
+			<spring:message code="form.legend.field"/>
 		</legend>
 		
 		<form:select path="domaine" id="domaine">
-			<form:option value="0" label="-- Choisir un domaine"/>
 			<form:options items="${domaineList}"/>
 		</form:select>
 		
@@ -29,13 +28,13 @@
 
 	<fieldset>
 		<legend>
-			Informations complémentaires
+			<spring:message code="form.legend.infos"/>
 		</legend>
 	
 		<form:checkboxes items="${contratList}" path="contrat" element="li"/>
 		
 		<form:label path="teletravail">
-			Teletravail: 
+			<spring:message code="form.label.remoteJob"/>
 		</form:label>
 		<form:checkbox path="teletravail" value="1" id="teletravail"/>
 	
@@ -43,7 +42,9 @@
 
 	<fieldset>
 	
-		<legend>Localisation de la recherche</legend>	
+		<legend>
+			<spring:message code="form.legend.geolocation"/>
+		</legend>	
 
 		<form:radiobuttons element="li" path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
 
@@ -65,18 +66,18 @@
 	<fieldset>
 	
 		<legend>
-			Paramètres
+			<spring:message code="form.legend.parameter"/>
 		</legend>
 	
-		<div id="savedSearch-field" title="Cette recherche vous sera affiché par défaut si vous cochez cette case." data-toggle="tooltip" data-placement="top">
+		<div id="savedSearch-field" title="<spring:message code="form.search.save.label"/>" data-toggle="tooltip" data-placement="top">
 			<form:label path="savedSearch">
-				Sauvegarder cette recherche : 
+				<spring:message code="form.search.save"/>
 			</form:label>
 			<form:checkbox path="savedSearch" value="true" id="savedSearch"/>
 		</div>
 	
-		<input type="submit" value="Lancer la Recherche"/>
-		<input type="reset" value="Remettre à zéro"/>
+		<input type="submit" value="<spring:message code="form.submit.label"/>"/>
+		<input type="reset" value="<spring:message code="form.reset.label"/>"/>
 		
 	</fieldset>
 

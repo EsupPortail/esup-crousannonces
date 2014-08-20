@@ -58,6 +58,6 @@ public class URLUtils {
 		for(Object o : arr) {
 			sb.append("&" + key + "[]=" + o.toString());
 		}
-		return sb.toString();
+		return sb.toString().replaceAll("%5B%5D=", "[]=");
 	}
 }

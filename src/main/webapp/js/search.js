@@ -22,4 +22,15 @@ $(document).ready(function() {
 		});
 	}
 	
+	var sortOptions = function(a,b) {
+		return a.innerHTML >= b.innerHTML ? 1 : -1;
+	};
+	var $regionSelect = $('#regionCode');
+	var $townSelect = $('#townCode');
+	
+	var sortedRegions = $regionSelect.find('option').sort(sortOptions);
+	var sortedTowns = $townSelect.find('option').sort(sortOptions);
+
+	$regionSelect.html(sortedRegions);
+	$townSelect.html(sortedTowns);	
 });
