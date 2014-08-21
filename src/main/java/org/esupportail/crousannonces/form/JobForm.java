@@ -70,7 +70,10 @@ public class JobForm extends CrousForm {
 			}
 			
 			argumentMap.put("domaine", this.domaine+"");
-			arrayQueryStrings.add(URLUtils.arrayToQueryString("type", this.type));
+			
+			if(this.type != null) {
+				arrayQueryStrings.add(URLUtils.arrayToQueryString("type", this.type));				
+			}
 		}
 		if(this.contrat.length > 0) {
 			arrayQueryStrings.add(URLUtils.arrayToQueryString("contrat", this.contrat));
