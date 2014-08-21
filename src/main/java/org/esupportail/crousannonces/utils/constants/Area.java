@@ -14,7 +14,6 @@ public class Area  {
 	
 	static {
 		
-		Area.PLACE_CODE.put(1, Area.INSEE_CODE);
 		Area.PLACE_CODE.put(2, Area.TOWN_CODE);
 		Area.PLACE_CODE.put(3, Area.DEPARTMENT_CODE);
 		Area.PLACE_CODE.put(4, Area.REGION_CODE);

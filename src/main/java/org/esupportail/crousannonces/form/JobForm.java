@@ -7,26 +7,26 @@ import java.util.Vector;
 
 import org.esupportail.crousannonces.utils.URLUtils;
 
-public class JobForm extends CrousForm {
+public class JobForm {
 
-	protected int domaine;
-	protected Integer[] type;
+	private int domaine;
+	private Integer[] type;
 
-	protected Integer[] aideADomicile;
-	protected Integer[] animation;
-	protected Integer[] autres;
-	protected Integer[] bureau;
-	protected Integer[] hotellerie;
-	protected Integer[] vente;
-	protected Integer[] contrat;
-	protected int teletravail;
-	protected int typeLieu;
-	protected int codeLieu;
-	protected int townCode;
-	protected int departmentCode;
-	protected int regionCode;
-	protected String order;
-	protected boolean isSavedSearch;
+	private Integer[] aideADomicile;
+	private Integer[] animation;
+	private Integer[] autres;
+	private Integer[] bureau;
+	private Integer[] hotellerie;
+	private Integer[] vente;
+	private Integer[] contrat;
+	private int teletravail;
+	private int typeLieu;
+	private int codeLieu;
+	private int townCode;
+	private int departmentCode;
+	private int regionCode;
+	private String order;
+	private boolean isSavedSearch;
 	
 	public String buildQueryString(Map<String, String> defaults) {
 		

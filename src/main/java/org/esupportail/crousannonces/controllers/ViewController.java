@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
-import javax.portlet.PortletException;
 import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
@@ -32,6 +31,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 
+import com.google.gson.Gson;
+
 /**
  * Handles requests for the portlet view mode.
  */
@@ -42,6 +43,7 @@ public class ViewController {
 	private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
 	
 	@Autowired private RestTemplate restTemplate;
+	@Autowired private Gson gson;
 	
 	@Value("${lokaviz.rest.url}")        private String LOKAVIZ_URL;
 	@Value("${jobaviz.rest.url}")        private String JOBAVIZ_URL;
@@ -96,12 +98,25 @@ public class ViewController {
 			if(prefQueryString != null) {
 				
 				lokavizUrl = this.LOKAVIZ_URL + prefQueryString;
-				logger.info(lokavizUrl);
+				String preferences = prefs.getValue(this.LOKAVIZ_PREFERENCE_DATA, null);
+				RentalForm rf = gson.fromJson(preferences, RentalForm.class);
+				
+				Map<Integer, String> placeMap = Area.PLACE_CODE.get(rf.getTypeLieu());
+				model.addAttribute("placeLabel", "view.place." + rf.getTypeLieu());
+				model.addAttribute("placeName", placeMap.get(rf.codeLieuDecoder(rf.getTypeLieu())));
+				
 			} else {
 				
 				Map<String, String> queryString = (HashMap) this.defaultQueryMap.clone();
 				queryString.put("type_lieu", this.REST_DEFAULT_PLACE_TYPE);
 				queryString.put("code_lieu", this.REST_DEFAULT_PLACE_CODE);
+				
+				Map<Integer, String> placeMap = Area.PLACE_CODE.get(new Integer(this.REST_DEFAULT_PLACE_TYPE));
+				
+				model.addAttribute("placeLabel", "view.place." + this.REST_DEFAULT_PLACE_TYPE);
+				model.addAttribute("placeName", placeMap.get(new Integer(this.REST_DEFAULT_PLACE_CODE)));
+				
+				
 				lokavizUrl = this.LOKAVIZ_URL + URLUtils.mapToString(queryString);
 			}
 		}
@@ -141,6 +156,8 @@ public class ViewController {
 			if(prefQueryString != null) {
 				
 				jobavizUrl = this.JOBAVIZ_URL + prefQueryString;
+				String preferences = prefs.getValue(this.JOBAVIZ_PREFERENCE_DATA, null);
+				JobForm rf = gson.fromJson(preferences, JobForm.class); 
 			} else {
 				
 				Map<String, String> queryString = (HashMap) this.defaultQueryMap.clone();
@@ -189,7 +206,7 @@ public class ViewController {
 			PortletPreferences prefs = request.getPreferences();
 			try {
 				prefs.setValue(this.JOBAVIZ_PREFERENCE_KEY, queryString);
-				prefs.setValues(this.JOBAVIZ_PREFERENCE_DATA, jobForm.fieldsToArray());
+				prefs.setValue(this.JOBAVIZ_PREFERENCE_DATA, gson.toJson(jobForm));
 				prefs.store();
 			} catch (Exception e) {}
 		}
@@ -225,7 +242,7 @@ public class ViewController {
 			try {
 				
 				pref.setValue(this.LOKAVIZ_PREFERENCE_KEY, queryString);
-				pref.setValues(this.JOBAVIZ_PREFERENCE_DATA, rentalForm.fieldsToArray());
+				pref.setValue(this.LOKAVIZ_PREFERENCE_DATA, gson.toJson(rentalForm));
 				pref.store();
 			} catch (Exception e) {}
 		}

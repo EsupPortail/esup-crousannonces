@@ -34,26 +34,27 @@
 	</bean>
 
 	<util:list id="messageConvertersList">
-		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<bean
+			class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
 			<property name="supportedMediaTypes">
 				<util:list>
 					<bean class="org.springframework.http.MediaType">
 						<constructor-arg value="application" />
-                        <constructor-arg value="json" />
+						<constructor-arg value="json" />
 					</bean>
 					<bean class="org.springframework.http.MediaType">
 						<constructor-arg value="application" />
-                        <constructor-arg value="json" />
-                        <constructor-arg value="#{T(java.nio.charset.Charset).forName('UTF-8')}"/>
+						<constructor-arg value="json" />
+						<constructor-arg value="#{T(java.nio.charset.Charset).forName('UTF-8')}" />
 					</bean>
 					<bean class="org.springframework.http.MediaType">
 						<constructor-arg value="text" />
-                        <constructor-arg value="html" />
+						<constructor-arg value="html" />
 					</bean>
 					<bean class="org.springframework.http.MediaType">
 						<constructor-arg value="text" />
-                        <constructor-arg value="html" />
-                        <constructor-arg value="#{T(java.nio.charset.Charset).forName('UTF-8')}"/>
+						<constructor-arg value="html" />
+						<constructor-arg value="#{T(java.nio.charset.Charset).forName('UTF-8')}" />
 					</bean>
 				</util:list>
 			</property>
@@ -97,5 +98,7 @@
 			</util:list>
 		</property>
 	</bean>
+	
+	<bean id="gson" class="com.google.gson.Gson" />
 
 </beans>

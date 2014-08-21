@@ -6,20 +6,20 @@ import java.util.Vector;
 
 import org.esupportail.crousannonces.utils.URLUtils;
 
-public class RentalForm extends CrousForm {
+public class RentalForm {
 
-	protected Integer[] situation;
-	protected Integer[] type;
-	protected Integer[] contrat;
-	protected int   isPMR;
-	protected int   isLabel;
-	protected int   typeLieu;
-	protected int   codeLieu;
-	protected int   townCode;
-	protected int   departmentCode;
-	protected int   regionCode;
-	protected String order;
-	protected boolean savedSearch;
+	private Integer[] situation;
+	private Integer[] type;
+	private Integer[] contrat;
+	private int   isPMR;
+	private int   isLabel;
+	private int   typeLieu;
+	private int   codeLieu;
+	private int   townCode;
+	private int   departmentCode;
+	private int   regionCode;
+	private String order;
+	private boolean savedSearch;
 
 	public String buildQueryString(Map<String, String> defaults) {
 	
@@ -144,4 +144,18 @@ public class RentalForm extends CrousForm {
 	public void setSavedSearch(boolean saveSearch) {
 		this.savedSearch = saveSearch;
 	}
+	
+	public int codeLieuDecoder(int typeLieu) {
+		switch(typeLieu) {
+			case 2:
+				return this.townCode;
+			case 3:
+				return this.departmentCode;
+			case 4:
+				return this.regionCode;
+			default:
+				return -1;
+		} 
+	}
+	
 }

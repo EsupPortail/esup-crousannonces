@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class URLUtils {
 
@@ -60,4 +61,13 @@ public class URLUtils {
 		}
 		return sb.toString().replaceAll("%5B%5D=", "[]=");
 	}
+	
+	public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
+		for(Entry<T, E> entry : map.entrySet()) {
+			if(value.equals(entry.getValue()))
+				return entry.getKey();
+		}
+		return null;
+	}
+	
 }
