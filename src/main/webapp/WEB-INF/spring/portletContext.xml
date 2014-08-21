@@ -17,6 +17,14 @@
 	<!-- Autodetect annotated controllers -->
 	<context:component-scan base-package="org.esupportail.crousannonces.controllers" />
 
+	<bean
+		class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<bean
+				class="org.esupportail.crousannonces.controllers.MinimizedStateHandlerInterceptor" />
+		</property>
+	</bean>
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<bean id="viewResolver"
