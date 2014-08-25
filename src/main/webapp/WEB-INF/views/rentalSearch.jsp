@@ -15,19 +15,17 @@
 			<form:label path="situation">
 				<spring:message code="form.label.situation"/>
 			</form:label>
+			<br/>
+			<form:checkboxes path="situation" items="${situationList}"/>
 		</p>
-		<ul class="clearfix">
-			<form:checkboxes element="li" path="situation" items="${situationList}"></form:checkboxes>
-		</ul>
 		
 		<p>
 			<form:label path="type">
 				<spring:message code="form.label.type"/>
 			</form:label> 
+			<br/>
+			<form:checkboxes path="type" items="${typeList}"></form:checkboxes>
 		</p>
-		<ul class="clearfix">
-			<form:checkboxes element="li" path="type" items="${typeList}"></form:checkboxes>
-		</ul>		
 		
 	</fieldset>
 	
@@ -41,24 +39,35 @@
 			<form:label path="contrat">	
 				<spring:message code="form.label.inside"/>
 			</form:label>
+			<br/>
+			<form:checkboxes path="contrat" items="${contractTypeList}"></form:checkboxes>
 		</p>
-		<ul class="clearfix">
-			<form:checkboxes element="li" path="contrat" items="${contractTypeList}"></form:checkboxes>
-		</ul>
 				
-		<br>
+		<p>
+			<c:set var="pmrTooltipTitle">
+				<spring:message code="tootlip.pmr.title"/>
+			</c:set>
+			<form:label path="isPMR" data-toggle="tooltip" data-placement="top" title="${pmrTooltipTitle}">
+				<spring:message code="form.label.pmr"/>
+				<form:checkbox path="isPMR" value="1" id="isPMR"/>
+			</form:label>
+		</p>
 		
-		<form:label path="isPMR">
-			<spring:message code="form.label.pmr"/>
-		</form:label>
-		<form:checkbox path="isPMR" value="1" id="isPMR"/>
-			
-			<br>
-				
-		<form:label path="isLabel">
-			<spring:message code="form.label.label"/>
-		</form:label>
-		<form:checkbox path="isLabel" value="1" id="isLabel"/>
+		<p>
+			<c:set var="labelTooltipTitle">
+				<spring:message code="tootlip.label.title"/>
+			</c:set>
+			<form:label path="isLabel"  data-toggle="tooltip" data-placement="top" title="${labelTooltipTitle}">
+				<spring:message code="form.label.label"/>
+				<form:checkbox path="isLabel" value="1" id="isLabel"/>
+			</form:label>
+		</p>
+		
+		<script>
+			$(document).ready(function() {
+				$('[data-toggle=tooltip]').tooltip();
+			});
+		</script>
 	
 	</fieldset>
 
@@ -67,21 +76,16 @@
 		<legend>
 			<spring:message code="form.legend.geolocation"/>
 		</legend>	
-
-		<form:radiobuttons element="li" path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
-
-			<br><br>
-
-		<form:select path="townCode" items="${townList}" data-place="2"></form:select>
 		
-		<br><br>
+		<p>
+			<spring:message code="form.label.typeLieu"/>
+			<br/>
+			<form:radiobuttons path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
+		</p>
 		
-		<form:select path="departmentCode" items="${departmentList}" data-place="3"></form:select>
-		
-		
-		<br><br>
-		
-		<form:select path="regionCode" items="${regionList}" data-place="4"></form:select>
+		<form:select path="townCode" items="${townList}" data-place="2" class="form-control"></form:select>
+		<form:select path="departmentCode" items="${departmentList}" data-place="3" class="form-control"></form:select>
+		<form:select path="regionCode" items="${regionList}" data-place="4" class="form-control"></form:select>
 
 	</fieldset>
 	

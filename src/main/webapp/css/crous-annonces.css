@@ -26,3 +26,17 @@
 	.ca-portlet .thumbnail:hover img {
 		opacity: .7;
 	}
+	
+/* Reset forms styles to avoid bad portal styling rules */
+
+.ca-portlet label {
+	clear: none;
+	margin: auto;
+	float: none;
+	text-align: initial;
+	width: auto;
+}
+.ca-portlet input[type=checkbox],
+.ca-portlet input[type=radio] {
+	margin : 0 .5em;
+}

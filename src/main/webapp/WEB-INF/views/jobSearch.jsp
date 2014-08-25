@@ -11,18 +11,18 @@
 			<spring:message code="form.legend.field"/>
 		</legend>
 		
-		<form:select path="domaine" id="domaine">
+		<form:select path="domaine" id="domaine" class="form-control">
 			<form:options items="${domaineList}"/>
 		</form:select>
 		
 		<br/>
 		
-		<form:select path="aideADomicile" items="${aideADomicileList}" data-domaine="4"></form:select>
-		<form:select path="animation" items="${animationList}" data-domaine="2"></form:select>
-		<form:select path="autres" items="${autresList}" data-domaine="1"></form:select>
-		<form:select path="bureau" items="${bureauList}" data-domaine="5"></form:select>
-		<form:select path="hotellerie" items="${hotellerieList}" data-domaine="3"></form:select>
-		<form:select path="vente" items="${venteList}" data-domaine="6"></form:select>
+		<form:select path="aideADomicile" items="${aideADomicileList}" data-domaine="4" class="form-control"></form:select>
+		<form:select path="animation" items="${animationList}" data-domaine="2" class="form-control"></form:select>
+		<form:select path="autres" items="${autresList}" data-domaine="1" class="form-control"></form:select>
+		<form:select path="bureau" items="${bureauList}" data-domaine="5" class="form-control"></form:select>
+		<form:select path="hotellerie" items="${hotellerieList}" data-domaine="3" class="form-control"></form:select>
+		<form:select path="vente" items="${venteList}" data-domaine="6" class="form-control"></form:select>
 		
 	</fieldset>
 
@@ -31,13 +31,19 @@
 			<spring:message code="form.legend.infos"/>
 		</legend>
 	
-		<form:checkboxes items="${contratList}" path="contrat" element="li"/>
+		<p>
+			<spring:message code="form.label.contractType"/>
+			<br/>
+			<form:checkboxes items="${contratList}" path="contrat"/>
+		</p>
 		
-		<form:label path="teletravail">
-			<spring:message code="form.label.remoteJob"/>
-		</form:label>
-		<form:checkbox path="teletravail" value="1" id="teletravail"/>
-	
+		<p>
+			<form:label path="teletravail">
+				<spring:message code="form.label.remoteJob"/>		
+				<form:checkbox path="teletravail" value="1" id="teletravail"/>
+			</form:label>		
+		</p>
+
 	</fieldset>
 
 	<fieldset>
@@ -45,21 +51,16 @@
 		<legend>
 			<spring:message code="form.legend.geolocation"/>
 		</legend>	
-
-		<form:radiobuttons element="li" path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
-
-			<br><br>
-
-		<form:select path="townCode" items="${townList}" data-place="2"></form:select>
 		
-		<br><br>
+		<p>
+			<spring:message code="form.label.typeLieu"/>
+			<br/>
+			<form:radiobuttons path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
+		</p>
 		
-		<form:select path="departmentCode" items="${departmentList}" data-place="3"></form:select>
-		
-		
-		<br><br>
-		
-		<form:select path="regionCode" items="${regionList}" data-place="4"></form:select>
+		<form:select path="townCode" items="${townList}" data-place="2" class="form-control"></form:select>
+		<form:select path="departmentCode" items="${departmentList}" data-place="3" class="form-control"></form:select>
+		<form:select path="regionCode" items="${regionList}" data-place="4" class="form-control"></form:select>
 
 	</fieldset>
 	
