@@ -156,13 +156,23 @@ public class ViewController {
 			if(prefQueryString != null) {
 				
 				jobavizUrl = this.JOBAVIZ_URL + prefQueryString;
-				String preferences = prefs.getValue(this.JOBAVIZ_PREFERENCE_DATA, null);
-				JobForm rf = gson.fromJson(preferences, JobForm.class); 
+				
+				String preferences = prefs.getValue(this.LOKAVIZ_PREFERENCE_DATA, null);
+				JobForm jf = gson.fromJson(preferences, JobForm.class);
+				
+				Map<Integer, String> placeMap = Area.PLACE_CODE.get(jf.getTypeLieu());
+				model.addAttribute("placeLabel", "view.place." + jf.getTypeLieu());
+				model.addAttribute("placeName", placeMap.get(jf.codeLieuDecoder(jf.getTypeLieu())));
 			} else {
 				
 				Map<String, String> queryString = (HashMap) this.defaultQueryMap.clone();
 				queryString.put("type_lieu", this.REST_DEFAULT_PLACE_TYPE);
 				queryString.put("code_lieu", this.REST_DEFAULT_PLACE_CODE);
+				
+				Map<Integer, String> placeMap = Area.PLACE_CODE.get(new Integer(this.REST_DEFAULT_PLACE_TYPE));
+				model.addAttribute("placeLabel", "view.place." + this.REST_DEFAULT_PLACE_TYPE);
+				model.addAttribute("placeName", placeMap.get(new Integer(this.REST_DEFAULT_PLACE_CODE)));
+				
 				jobavizUrl = this.JOBAVIZ_URL + URLUtils.mapToString(queryString);				
 			}
 			
@@ -245,10 +255,7 @@ public class ViewController {
 				pref.setValue(this.LOKAVIZ_PREFERENCE_DATA, gson.toJson(rentalForm));
 				pref.store();
 			} catch (Exception e) {}
-		}
-		
-		logger.info(this.LOKAVIZ_URL + queryString);
-		
+		}		
 		response.setRenderParameter("action", "rentalList");
 		response.setRenderParameter("lokavizUrl", this.LOKAVIZ_URL + queryString);
 	}

@@ -35,7 +35,13 @@
 					</c:if>
 					<div class="caption col-xs-${not empty rentalItem.thumbnail ? "9" : "12"}">
 						
-						<h3>${rentalItem.type} - ${rentalItem.superficie} - ${rentalItem.contrat}</h3>
+						<h3>
+							${rentalItem.type} - 
+							<c:if test="${rentalItem.superficie ne '[]'}">
+								${rentalItem.superficie eq '[]' ? '' : rentalItem.superficie} - 
+							</c:if>
+							${rentalItem.contrat}
+						</h3>
 						
 						<p>
 							<spring:message code="view.loyer" arguments="${rentalItem.loyer}"/>

@@ -228,17 +228,18 @@ public class JobForm {
 	public void setRegionCode(int regionCode) {
 		this.regionCode = regionCode;
 	}
-	
-	public String[] fieldsToArray() throws IllegalAccessException {
-		
-		Field[] fields = getClass().getDeclaredFields();		
-		String[] arr = new String[fields.length];
-		
-		for(int i=0; i<fields.length; i++) {
-			arr[i] = fields[i].getName() + "=" + fields[i].get(this);
-		}
-	
-		return arr;
+
+	public int codeLieuDecoder(int typeLieu) {
+		switch(typeLieu) {
+			case 2:
+				return this.townCode;
+			case 3:
+				return this.departmentCode;
+			case 4:
+				return this.regionCode;
+			default:
+				return -1;
+		} 
 	}
 	
 }

@@ -3,6 +3,9 @@
 	<header>
 		<h2>
 			<spring:message code="view.nb.result" arguments="${response.query.nbResults}"/>
+			<c:if test="${not empty placeLabel}">
+				<spring:message code="${placeLabel}" arguments="${placeName}"/>
+			</c:if>
 			<small>
 				<portlet:renderURL var="jobSearchLink">
 					<portlet:param name="action" value="jobSearch"/>
