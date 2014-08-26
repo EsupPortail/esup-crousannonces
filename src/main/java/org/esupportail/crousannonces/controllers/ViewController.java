@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -122,7 +123,7 @@ public class ViewController {
 		}
 		
 		try {
-			RestResponse response = this.restTemplate.getForObject(lokavizUrl, RestResponse.class);
+			RestResponse response = this.loadResponse(lokavizUrl);
 			model.addAttribute("response", response);
 			model.addAttribute("activeView", "lokaviz");	
 		} catch (Exception e) {
@@ -178,7 +179,7 @@ public class ViewController {
 			
 		}
 		
-		RestResponse response = this.restTemplate.getForObject(jobavizUrl, RestResponse.class);
+		RestResponse response = this.loadResponse(jobavizUrl);
 		model.addAttribute("response", response);
 		model.addAttribute("activeView", "jobaviz");
 		model.addAttribute("bothActive", this.isBothActive());
@@ -265,6 +266,11 @@ public class ViewController {
 			return true;
 		}
 		return false;
+	}
+	
+	@Cacheable(value = "responseCache", key = "#url")
+	private RestResponse loadResponse(String url) {
+		return this.restTemplate.getForObject(url, RestResponse.class);
 	}
 	
 }
