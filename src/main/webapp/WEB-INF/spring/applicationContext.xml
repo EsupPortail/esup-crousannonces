@@ -2,4 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<bean id="defaultExceptionHandlerTemplate" class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver" abstract="true">
+    <property name="defaultErrorView" value="error/exception" />
+    <!-- 
+    	For specific exception handler please use the tag below.
+     -->
+    <!-- 
+    <property name="exceptionMappings">
+        <props>
+            <prop key="org.springframework.web.portlet.bind.MissingPortletRequestParameterException">
+                error/error-missing-parameter
+            </prop>
+        </props>
+    </property>
+ 	-->
+</bean>
+
+<bean id="defaultExceptionHandler" parent="defaultExceptionHandlerTemplate" />
+
 </beans>
