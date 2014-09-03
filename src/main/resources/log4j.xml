@@ -9,7 +9,22 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
-	
+
+	<appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+		<param name="BufferSize" value="1" />
+		<param name="SMTPHost" value="mail.your-domain.com" />
+		<param name="From" value="no-reply@your-domain.com" />
+		<param name="To" value="you@your-domain.com" />
+		<param name="Subject" value="[Esup-CrousAnnonces-Portlet] Exception caught" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="error" />
+			<param name="LevelMax" value="fatal" />
+		</filter>
+	</appender>
+
 	<!-- Application Loggers -->
 	<logger name="org.esupportail.crousannonces.controllers">
 		<level value="info" />
@@ -36,6 +51,7 @@
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		<appender-ref ref="mail"/>
 	</root>
 	
 </log4j:configuration>
