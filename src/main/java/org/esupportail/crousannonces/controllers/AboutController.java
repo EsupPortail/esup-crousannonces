@@ -17,8 +17,12 @@
  */
 package org.esupportail.crousannonces.controllers;
 
+import javax.portlet.RenderRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +34,15 @@ public class AboutController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ViewController.class);
 	
+	@Value("${activate.lokaviz}")        private boolean isLokavizActivate;
+	@Value("${activate.jobaviz}")        private boolean isJobavizActivate;
+	
 	@RenderMapping
-	public String about(Model model) {
+	public String about(RenderRequest req, Model model) {
+
+		model.addAttribute("isLokavizActivate", isLokavizActivate);
+		model.addAttribute("isJobavizActivate", isJobavizActivate);
+		model.addAttribute("contextPath", req.getContextPath());
 		return "about";
 	}
 	
