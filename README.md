@@ -1,27 +1,33 @@
 # Esup-crous-annonces
 
-Default configuration for Jobaviz/Lokaviz webservice
-You can display ads at a specific location by default. 
+Ce projet est une portlet distribué par la communauté Esup-Portail. Elle a pour but d'afficher les annonces logements et/ou emplois des services Lokaviz et Jobaviz du CROUS.
 
-You will only needs to set two parameters : _place type_ and _place code_. The following documentation shows you what these codes mean.
+## Clé API
 
-## Secret code
+Pour avoir accès au WebService Lokaviz et Jobaviz vous aurez besoin d'une clé. Cette clé est nécessaire pour des statistique d'usage du service. 
+Dans vos périodes de tests et déploiement vous pouvez utiliser la clé prévue à cet effet : `A_DEFINIR`
 
-You will need an API key to access the webservice. The procedure to get a key is not yet defined. Please contact me for further information.
+Une fois en production, il est nécessaire d'utiliser une clé qui vous est propre. Afin d'en obtenir une merci de contacter `contactcleportlet@crous-mobile.fr`
 
-## Place type
 
-To display a place type by default change `rest.default.place.type` in `config.properties`
+## Configuration
 
-* 2 : Town
-* 3 : Department
-* 4 : Region 
+Vous pouvez choisir d'afficher des annonces localisées pour vos utilisateurs par défaut. 
+Pour cela il faut renseigner les paramètres `place type` et `place code` dans le fichier config.properties de la portlet. 
 
-## Place code
+Ci-dessous une liste de toutes les valeurs possibles pour ces deux paramètres.
 
-### 2 : Town
+### Place type
 
-| Code  | Town |
+* 2 : Ville
+* 3 : Département
+* 4 : Région 
+
+### Place code
+
+#### 2 : Ville
+
+| Code  | Ville |
 | :---: | :---: |
 | 80 | Nîmes |
 | 77 | Agen |
@@ -31,7 +37,7 @@ To display a place type by default change `rest.default.place.type` in `config.p
 | 83 | Alençon |
 | 19 | Amiens |
 | 12 | Angers |
-| 55 | Angoulême |
+| 55 | Angoulème |
 | 69 | Annecy |
 | 139 | Antony |
 | 100 | Arras |
@@ -155,9 +161,9 @@ To display a place type by default change `rest.default.place.type` in `config.p
 | 73 | Vesoul |
 | 88 | Vichy |
 
-### 3 : Department
+#### 3 : Département
 
-| Code | Department |
+| Code | Département |
 | :--: | :--------: |
 |  1   | Ain |
 |  2   | Aisne |
@@ -180,7 +186,7 @@ To display a place type by default change `rest.default.place.type` in `config.p
 |  19  | Correze |
 |  20  | Corse-du-Sud |
 |  20  | HauteCorse |
-|  21  | Cöte-d'Or |
+|  21  | Côte-d'Or |
 |  22  | Côtes d'Armor |
 |  23  | Creuse |
 |  24  | Dordogne |
@@ -229,8 +235,8 @@ To display a place type by default change `rest.default.place.type` in `config.p
 |  67  | Bas-Rhin |
 |  68  | Haut-Rhin |
 |  69  | Rhône |
-|  70  | Haute-Sâone |
-|  71  | Sâone-et-Loire |
+|  70  | Haute-Saône |
+|  71  | Saône-et-Loire |
 |  72  | Sarthes |
 |  73  | Savoie |
 |  74  | Haute-Savoie |
@@ -256,9 +262,9 @@ To display a place type by default change `rest.default.place.type` in `config.p
 |  94  | Val-de-marne |
 |  95  | Val-d'oise |
 
-### 4 : Region
+#### 4 : Région
 
-| Code | Region |
+| Code | Région |
 | :--: | :----: |
 |  72  | Aquitaine |
 |  83  | Auverge |
