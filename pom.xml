@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.esupportail</groupId>
 	<artifactId>crousannonces</artifactId>
-	<name>esup-crousannonces-portlet</name>
+	<name>esup-crousannonces</name>
 	<packaging>war</packaging>
 	<version>1.0.0-RC1</version>
 
@@ -190,7 +190,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.1.1</version>
 				<configuration>
-					<warName>esup-crousannonces-portlet</warName>
+					<warName>esup-crousannonces</warName>
 				</configuration>
 			</plugin>
 			<plugin>
