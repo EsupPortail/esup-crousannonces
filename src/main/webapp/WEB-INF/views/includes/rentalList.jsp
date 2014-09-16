@@ -24,7 +24,7 @@
 	</header>
 	
 	<section>
-		<c:forEach var="rentalItem" items="${response.results.resultList}" varStatus="status">
+		<c:forEach var="rentalItem" items="${response.results}" varStatus="status">
 		
 			<article class="annonce">
 				<div class="thumbnail row">

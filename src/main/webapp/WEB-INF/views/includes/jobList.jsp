@@ -23,7 +23,7 @@
 	</header>
 	
 	<section>
-		<c:forEach var="jobItem" items="${response.results.resultList}" varStatus="status">
+		<c:forEach var="jobItem" items="${response.results}" varStatus="status">
 		
 			<article class="annonce annonce-job">
 				<div class="thumbnail">

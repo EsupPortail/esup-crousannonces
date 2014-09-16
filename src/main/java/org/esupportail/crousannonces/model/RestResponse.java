@@ -17,6 +17,8 @@
  */
 package org.esupportail.crousannonces.model;
 
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class RestResponse {
@@ -25,13 +27,13 @@ public class RestResponse {
 	private QueryResponse query;
 
 	@JsonProperty("results")
-	private ResultObject results;
+	private List results;
 	
 	public QueryResponse getQuery() {
 		return query;
 	}
 
-	public ResultObject getResults() {
+	public List getResults() {
 		return results;
 	}
 	
