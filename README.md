@@ -1,4 +1,4 @@
-# Esup-crous-annonces
+# Esup-crous-annonces v1.0.0
 
 Ce projet est une portlet distribué par la communauté Esup-Portail. Elle a pour but d'afficher les annonces logements et/ou emplois des services Lokaviz et Jobaviz du CROUS.
 
