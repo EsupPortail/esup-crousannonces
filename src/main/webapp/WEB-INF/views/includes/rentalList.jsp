@@ -28,12 +28,16 @@
 		
 			<article class="annonce">
 				<div class="thumbnail row">
-					<c:if test="${not empty rentalItem.thumbnail}">
-						<div class="picture-crop col-xs-3">
+					<div class="picture-crop col-xs-3">
+						<c:if test="${not empty rentalItem.thumbnail}">
 							<img src="${rentalItem.thumbnail}" alt="${rentalItem.type} - ${rentalItem.superficie}"/>
-						</div>
-					</c:if>
-					<div class="caption col-xs-${not empty rentalItem.thumbnail ? "9" : "12"}">
+						</c:if>
+						<c:if test="${empty rentalItem.thumbnail}">
+							<img src="<%=request.getContextPath()%>/img/photoUnavailable.png" alt="<spring:message code="view.photo.none"/>" style="max-width: 150px;"/>
+						</c:if>
+					</div>
+
+					<div class="caption col-xs-9">
 						
 						<h3>
 							${rentalItem.type} - 
