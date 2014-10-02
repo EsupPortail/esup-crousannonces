@@ -38,7 +38,7 @@ public class Job {
 	static {
 		Job.FIELD.put(4, "Aide à domicile");
 		Job.FIELD.put(2, "Animation");
-		Job.FIELD.put(1, "Autres domaine");
+		Job.FIELD.put(1, "Autres domaines");
 		Job.FIELD.put(5, "Bureau");
 		Job.FIELD.put(3, "Hôtellerie");
 		Job.FIELD.put(6, "Vente");

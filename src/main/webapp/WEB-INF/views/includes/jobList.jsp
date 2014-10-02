@@ -28,7 +28,7 @@
 			<article class="annonce annonce-job">
 				<div class="thumbnail">
 					<h3>
-						${jobItem.domaine} - ${jobItem.type}
+						${jobItem.domaine} - ${jobItem.type} <br/>
 						<small>
 							<spring:message code="view.published.date" arguments="${jobItem.publication}"/>
 						</small>
