@@ -32,16 +32,18 @@
 		</legend>
 	
 		<p>
-			<spring:message code="form.label.contractType"/>
+			<form:label path="contrat">
+				&gt; <spring:message code="form.label.contractType"/>
+			</form:label>	
 			<br/>
 			<form:checkboxes items="${contratList}" path="contrat"/>
 		</p>
 		
 		<p>
 			<form:label path="teletravail">
-				<spring:message code="form.label.remoteJob"/>		
-				<form:checkbox path="teletravail" value="1" id="teletravail"/>
-			</form:label>		
+				&gt; <spring:message code="form.label.remoteJob"/>		
+			</form:label>
+			<form:checkbox path="teletravail" value="1" id="teletravail"/>
 		</p>
 
 	</fieldset>
@@ -53,7 +55,9 @@
 		</legend>	
 		
 		<p>
-			<spring:message code="form.label.typeLieu"/>
+			<form:label path="typeLieu">
+				&gt; <spring:message code="form.label.typeLieu"/>
+			</form:label>
 			<br/>
 			<form:radiobuttons path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
 		</p>
@@ -72,14 +76,14 @@
 	
 		<div id="savedSearch-field" title="<spring:message code="form.search.save.label"/>" data-toggle="tooltip" data-placement="top">
 			<form:label path="savedSearch">
-				<spring:message code="form.search.save"/>
+				&gt; <spring:message code="form.search.save"/>
 			</form:label>
 			<form:checkbox path="savedSearch" value="true" id="savedSearch"/>
 		</div>
-	
-		<input type="submit" value="<spring:message code="form.submit.label"/>"/>
-		<input type="reset" value="<spring:message code="form.reset.label"/>"/>
-		
+		<div class="search-buttons">
+			<input type="submit" value="<spring:message code="form.submit.label"/>"/>
+			<input type="reset" value="<spring:message code="form.reset.label"/>"/>
+		</div>
 	</fieldset>
 
 </form:form>

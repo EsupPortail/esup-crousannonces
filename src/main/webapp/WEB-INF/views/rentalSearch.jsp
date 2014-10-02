@@ -13,7 +13,7 @@
 		
 		<p>
 			<form:label path="situation">
-				<spring:message code="form.label.situation"/>
+				&gt; <spring:message code="form.label.situation"/>
 			</form:label>
 			<br/>
 			<form:checkboxes path="situation" items="${situationList}"/>
@@ -21,7 +21,7 @@
 		
 		<p>
 			<form:label path="type">
-				<spring:message code="form.label.type"/>
+				&gt; <spring:message code="form.label.type"/>
 			</form:label> 
 			<br/>
 			<form:checkboxes path="type" items="${typeList}"></form:checkboxes>
@@ -37,7 +37,7 @@
 	
 		<p>
 			<form:label path="contrat">	
-				<spring:message code="form.label.inside"/>
+				&gt; <spring:message code="form.label.inside"/>
 			</form:label>
 			<br/>
 			<form:checkboxes path="contrat" items="${contractTypeList}"></form:checkboxes>
@@ -48,7 +48,7 @@
 				<spring:message code="tootlip.pmr.title"/>
 			</c:set>
 			<form:label path="isPMR" data-toggle="tooltip" data-placement="top" title="${pmrTooltipTitle}">
-				<spring:message code="form.label.pmr"/>
+				&gt; <spring:message code="form.label.pmr"/>
 				<form:checkbox path="isPMR" value="1" id="isPMR"/>
 			</form:label>
 		</p>
@@ -58,7 +58,7 @@
 				<spring:message code="tootlip.label.title"/>
 			</c:set>
 			<form:label path="isLabel"  data-toggle="tooltip" data-placement="top" title="${labelTooltipTitle}">
-				<spring:message code="form.label.label"/>
+				&gt; <spring:message code="form.label.label"/>
 				<form:checkbox path="isLabel" value="1" id="isLabel"/>
 			</form:label>
 		</p>
@@ -78,7 +78,9 @@
 		</legend>	
 		
 		<p>
-			<spring:message code="form.label.typeLieu"/>
+			<form:label path="typeLieu">
+				&gt; <spring:message code="form.label.typeLieu"/>
+			</form:label>
 			<br/>
 			<form:radiobuttons path="typeLieu" items="${placeTypeList}" id="typeLieu"/>
 		</p>
@@ -97,14 +99,14 @@
 	
 		<div id="savedSearch-field"  title="<spring:message code="form.search.save.label"/>" data-toggle="tooltip" data-placement="top">
 			<form:label path="savedSearch">
-				<spring:message code="form.search.save"/>
+				&gt; <spring:message code="form.search.save"/>
 			</form:label>
 			<form:checkbox path="savedSearch" value="true" id="savedSearch"/>
 		</div>
-	
-		<input type="submit" value="<spring:message code="form.submit.label"/>"/>
-		<input type="reset" value="<spring:message code="form.reset.label"/>"/>
-		
+		<div class="search-buttons">
+			<input type="submit" value="<spring:message code="form.submit.label"/>"/>
+			<input type="reset" value="<spring:message code="form.reset.label"/>"/>
+		</div>
 	</fieldset>
 
 </form:form>
