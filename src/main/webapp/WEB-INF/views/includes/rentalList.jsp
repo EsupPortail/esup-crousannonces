@@ -46,11 +46,15 @@
 							</c:if>
 							${rentalItem.contrat}
 						</h3>
-						
 						<p>
-							<spring:message code="view.loyer" arguments="${rentalItem.loyer}"/>
+							<c:if test="${empty rentalItem.loyer}">
+								<spring:message code="view.loyer.none"/>
+							</c:if>
 							<c:if test="${not empty rentalItem.loyer}">
-								<spring:message code="view.charges" arguments="${rentalItem.charges}"/>
+								<spring:message code="view.loyer" arguments="${rentalItem.loyer}"/>
+								<c:if test="${not empty rentalItem.charges}">
+									(<spring:message code="view.charges" arguments="${rentalItem.charges}"/>)
+								</c:if>
 							</c:if>
 						</p>
 						
